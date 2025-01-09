@@ -1,0 +1,36 @@
+\section{Related work}
+\label{sec:related_work}
+
+The work in this thesis is related to Laser Speckle Imaging, Laser Doppler Vibrometry and Laser Speckle Vibrometry.
+
+\subsection{Laser Speckle Imaging}
+Laser speckle imaging analyses the interference patterns generated when coherent light from a laser, scatters off an optically rough surface. These "speckles" can be captured by any photosensitive surface - and most commonly - a camera image sensor. 
+The mean speckle size is an important parameter, as the pixels of the image sensor must be smaller in order to resolve a pattern. The speckle size is a statistical property of the interference pattern and depends on the laser wavelength, sensor-to-surface distance and illuminated area. Cloud \cite{specklesize} defines the speckle size as "the center-to-center spacing of adjacent dark or adjacent light spots in the speckle pattern". It can be expressed approximately:
+\[
+\text{Mean speckle size} \approx \lambda \cdot \frac{d}{a}
+\]
+where:
+\begin{itemize}
+    \item \(\lambda\) is the wavelength of the laser light,
+    \item \(d\) is the distance from the scattering surface to the observation plane,
+    \item \(a\) is the diameter or size of the illuminated area (e.g. laser spot area).
+\end{itemize}
+
+Hu et al. \cite{specklesizeANDstructure} show that the size of the speckle is not impacted by the structure of the laser beam. Using multiple lasers increases the illuminated area and reduces the speckle size. \includegraphics{figures/pattern_laser_progression.png}
+
+Speckle size can be tuned without changing $d$ or $a$ by de-focused imaging, proposed by Heikkinen and Schajer \cite{defocusedVSobjective}. They use a de-focused telephoto lens to optically change $d$ and show that the resulting speckle pattern is comparable if $d$ was changed physically. The method has an additional advantage of sampling a larger speckle field and capturing more light, important for weaker signals.
+
+Laser speckle imaging is simple to implement and does not require significant hardware, which motivates this semester project. Yan et al. \cite{lasershoes} developed "LaserShoes," a system using a USB webcam and Raspberry Pi mounted on shoes to classify ground textures based on speckle patterns. They evaluated different laser wavelengths and achieved accurate surface recognition with a compact, low-cost system. Chan et al. \cite{milkdrop} measured liquid characteristics (e.g., milk fat content) using smartphone LIDAR to image speckles, though many frames were needed due to the low power of the LIDAR laser.
+
+
+\subsection{Laser Doppler Vibrometry}
+
+Laser Doppler Vibrometry (LDV) measures an objects velocity by detecting the Doppler shift in the frequency of reflected coherent light. The measurement setup required is more complex as it involves mixing the emitted and back scattered laser light to detect a beat frequency, which if proportional to the velocity \cite{LDVreview}. LDV offers high precision and can measure large vibrations, but the complex setup makes it costly and challenging to scale. Speckle noise is a known limitation in LDV, caused by random phase shifts in scattered light due to surface roughness. Addressing this noise often requires advanced signal processing \cite{LDVreview}.
+
+\subsection{Laser Speckle Vibrometry}
+
+Laser Speckle Vibrometry detects vibrations from changes in the speckle pattern over time. Unlike LDV, it is much simpler, requiring only at least 1 photodiode or camera to capture intensity changes.
+
+Veber et al. \cite{veber2011laserMASK} used a single photodiode with a spatial mask and telephoto lens. Their system was able to measure vibrations at distances up to 50 m using a high power (1.5 W) laser. It detected oscillations of a sheet of paper exposed to sound pressure at 50 dB up to 5 kHz. On the other hand, Streli et al. \cite{structured-light-speckle} demonstrated a camera-based method using a 200 FPS camera with laser pointer modules to detect finger taps on a surface. However, the limitations of camera frame rates restrict detection to lower frequencies.
+
+Speckle vibrometry is effective for small-amplitude vibrations (including translation and pitch) but struggles with vibrations parallel to the laser beam (where LDV excels). Its simplicity and cost-effectiveness make it an attractive alternative to LDV for lower-cost applications.

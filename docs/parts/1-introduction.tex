@@ -1,0 +1,41 @@
+\section{Introduction}
+\label{sec:intro}
+
+Vibration sensing enables condition monitoring and predictive maintenance of industrial equipment by detecting mechanical faults before catastrophic failure occurs. Critical applications include monitoring of rotating machinery, bearings, and industrial robots, where unexpected downtime can result in significant production losses. Higher frequency vibrations are of particular interest \cite{cm-highfreq}.
+
+Typically, a vibration sensor is physically coupled to a designated surface of a machine using adhesive or glue. However, this brings the burden of cable management onto the user. Wireless sensors need their batteries replaced once in a while and require a receiving station. These limitations motivate the need for a vibration sensor that is easier to install and maintain and capable of monitoring many instances of equipment at once.
+
+Some monitoring approaches use microphones installed centrally in the room, using sound as a proxy for vibration. Many microphones are required to distinguish sounds coming from different sources.
+
+Remote video cameras can be used to record vibrations \cite{camvibration} when aimed at a fiducial marking. Many objects can fit in the field of view of a camera and can thus be monitored. 
+
+While cameras offer a non-contact and simple method for vibration sensing, they're limited to detecting macroscopic (resolution limited) and low-frequency (frame-rate limited) vibrations.
+
+In order to measure microscopic vibrations, we can exploit the speckle patterns that an optically rough surface produces (surface height variations on the order of laser wavelength) when laser light (like from a laser pointer) hits it.
+
+When the laser light is reflected and scattered by the optically rough surface, it produces a locally unique and stationary interference pattern. This pattern, known as a speckle pattern, results from the superposition of coherent light waves with different path lengths due to the surface's microscopic imperfections. The resulting speckle pattern can be observed on any imaging plane at a distance from the surface. To capture this pattern one can expose the bare image sensor (without lens) of any camera to the reflected and scattered light.
+
+When the surface is mechanically deformed, the imperfections are altered, causing the pattern to change as well. If the surface is translated under the laser light, the pattern appears to shift.
+
+In this work, we exploit this phenomenon for high speed remote vibration sensing. Our approach exceeds the bandwidth limitations of camera-based vibration sensing by capturing speckle patterns with an array of discrete high-speed photo-detectors arranged in a 3x3 grid - essentially a discrete image sensor.
+
+The novel discrete image sensor combines the advantages of remote, non-contact sensing with the ability to capture vibrations at a higher sampling rate than conventional cameras.
+
+To implement this concept, we designed and built the analog photo-detectors on a custom printed circuit board (PCB).
+
+The performance of the hardware was assessed in experiments using laser modules and a laser dot projector at 850 \si{\nano\meter}, with surface reflectivity being a critical factor in detection quality. A key finding was that multiple aligned laser sources could be used simultaneously without degrading the signal quality, enabling easier aiming from a distance.
+
+Hardware design parameters like pixel size and sensitivity were empirically deduced by using a reference the Raspberry Pi™ HQ camera 12.3 MP (IR filter and objective lens removed) as a reference image sensor.
+
+Detection of genuine speckle patterns was verified through comparative testing against non-coherent LED illumination, which produced no detectable vibration signal.
+
+Our discrete sensor has a bandwidth of 1 \si{\kilo\hertz} exceeding the maximum sampling rate of conventional cameras by an order of magnitude. Our sensor has a comparable sensitivity to the reference sensor. 
+
+\subsection{Contributions}
+
+The work in this semester project makes the following contributions.
+
+\begin{itemize}
+    \item High-bandwidth discrete sensor. Developed 1 kHz single-supply bandwidth sensor, surpassing conventional cameras by order of magnitude.
+    \item Sensitivity optimization. Achieved comparable sensitivity to reference sensor while maintaining high bandwidth.
+\end{itemize}

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "IC-HKBSO8-TP")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/IC-HKBSO8-TP.lib")(options "")(descr ""))
+)

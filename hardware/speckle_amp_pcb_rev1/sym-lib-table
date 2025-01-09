@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "M50-3140545")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/M50-3140545.lib")(options "")(descr ""))
+  (lib (name "OPA2380AIDGKTG4")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/OPA2380AIDGKTG4.lib")(options "")(descr ""))
+  (lib (name "ADR130BUJZ-R2")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/ADR130BUJZ-R2.lib")(options "")(descr ""))
+)

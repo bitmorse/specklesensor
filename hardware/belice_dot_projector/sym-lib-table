@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "LT1800CS8")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/LT1800CS8.lib")(options "")(descr ""))
+  (lib (name "FMMT619TA")(type "Legacy")(uri "${KIPRJMOD}/lib_sch/FMMT619TA.lib")(options "")(descr ""))
+)

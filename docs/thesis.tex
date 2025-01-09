@@ -1,0 +1,85 @@
+\documentclass{format/sip-thesis}
+
+\def\plaintitle{Discrete Photodetector Array Approach to High-Bandwidth Vibration Sensing}
+\def\plainauthor{Sam Sulaimanov}
+\def\plainemail{ssamir@ethz.ch}
+\def\plainkeywords{laser speckle; remote vibrometry; speckle detection; photodiode array}
+
+
+\definecolor{linkColor}{RGB}{6,125,233}
+\hypersetup{%
+  pdftitle={\plaintitle},
+  pdfauthor={\plainauthor},
+  pdfkeywords={\plainkeywords},
+  pdfdisplaydoctitle=true,
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=linkColor,
+  breaklinks=true,
+  hypertexnames=false
+}
+\usepackage{siunitx}
+
+
+
+% **************************************************
+% Information and Commands for Reuse
+% **************************************************
+\newcommand{\thesisTitle}{\plaintitle}
+\newcommand{\thesisSubject}{Semester Project}
+\newcommand{\thesisDate}{January 6th, 2024}
+\newcommand{\thesisVersion}{Final Version}
+
+\newcommand{\thesisFirstSupervisor}{Prof. Dr. Christian Holz}
+\newcommand{\thesisFirstSupervisorUniversity}{\protect{ETH Zürich}}
+\newcommand{\thesisFirstSupervisorDepartment}{Sensing, Interaction \& Perception Lab}
+
+\newcommand{\thesisSecondSupervisor}{Paul Streli}
+\newcommand{\thesisSecondSupervisorUniversity}{\protect{ETH Zürich}}
+\newcommand{\thesisSecondSupervisorDepartment}{Sensing, Interaction \& Perception Lab}
+
+\newcommand{\thesisUniversity}{\protect{ETH Zürich}}
+\newcommand{\thesisUniversityDepartment}{Department of Computer Science, ETH Zürich}
+\newcommand{\thesisUniversityGroup}{Sensing, Interaction \& Perception Lab}
+\newcommand{\thesisUniversityCity}{Zürich}
+\newcommand{\thesisUniversityStreetAddress}{Universitätstrasse 6}
+\newcommand{\thesisUniversityPostalCode}{8092}
+
+
+\begin{document}
+
+
+\maketitlepage
+\pagenumbering{arabic}
+
+% optional: include teaser image
+\input{parts/0-teaser}
+
+\maketitle
+
+% include abstract section
+\input{parts/0-abstract}
+
+% Keywords
+\keywords{\plainkeywords}
+
+% include all the files into the document
+\input{parts/1-introduction}
+\input{parts/2-related_work}
+\input{parts/3-implementation}
+\input{parts/4-evaluation}
+\input{parts/5-results}
+\input{parts/7-discussion}
+\input{parts/8-conclusion}
+\input{parts/9-acknowledgments}
+
+% balance columns on last page
+\balance{}
+
+\bibliography{references}
+
+\end{document}
