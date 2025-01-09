@@ -20,16 +20,16 @@ These results support the hypothesis that the use of multiple lasers enhances th
 \subsection{Circuit Performance}
 
 The custom-designed PCB and amplifier circuit were validated using SPICE simulations and experimental measurements. 
-The Bode plot in Figure~\ref{fig:bodeplot} demonstrated a stable frequency response with high gain, while the transient response shown in Figure~\ref{fig:transient} confirmed system stability. 
-Noise measurements (Figure~\ref{fig:totalnoise}) indicated a low total noise level, making the circuit suitable for laser speckle detection.
+The Bode plot in Figure~\ref{fig:bodeplot} demonstrated a flat frequency response with high gain, while the transient response shown in Figure~\ref{fig:transient} confirmed system stability. 
 
 \subsection{Impact of Experimental Parameters}
 
 The experiments revealed several critical factors impacting the measurement results. 
 The PCB required thorough cleaning with IPA and compressed air to eliminate flux residue, as any remaining contaminants introduced noise. 
 Additionally, conducting experiments in a light-controlled environment was essential to prevent saturation of the opamp and ensure reliable data capture. 
+The PCB had to be enclosed in a metal shield to limit the amount of incoming noise.
 Dot projector alignment, facilitated by cameras, is critical for ensuring consistent speckle patterns and uniform distribution across the photodiode array.
 
 \subsection{Limitations}
-The opamp saturated in sunlight, rendering the signal irrecoverable in such conditions. Dot projectors cannot be effectively used as the reflected light is too weak.
+The opamp saturated in sunlight, rendering the signal irrecoverable in such conditions. Dot projectors cannot be effectively used as the reflected light intensity is too low.
 Furthermore, the bandwidth of the system is limited to 1kHz.
