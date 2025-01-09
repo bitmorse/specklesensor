@@ -11,7 +11,7 @@ A Thorlabs Amplified Photodiode is used as the detector and a Keithley High Prec
 \begin{figure}[t]
   \centering
   \includegraphics[width=\widthnarrow]{figures/impl/camera_setup.png}
-  \caption{A laser is pointed at a painted wooden surface. A multimeter measured the current from a masked photodiode. A RPI HQ camera is used as a reference to visualise the speckle pattern).}
+  \caption{A laser is pointed at a painted wooden surface. A multimeter measured the current from a masked photodiode. A RPI HQ camera is used as a reference to visualise the speckle pattern.}
   \label{fig:cam1}
 \end{figure} 
 
@@ -25,9 +25,10 @@ A Thorlabs Amplified Photodiode is used as the detector and a Keithley High Prec
 
 A typical store-bought class 1 red laser pointer has an output power under 0.5mW. Using this laser pointer we find that the amount of photocurrent produced by the masked (0.9mm x 0.9mm pinhole) photodiode is on the order of 1 nA. This means that we need to at least be able to measure currents on this order of magnitude.
 
-The active area of the photodiode determines the capacitance but also the current sensitivity. The capacitance directly influences possible bandwidth. Ideally, we want a small photodiode area and we find this in the VEMD2704 with 1.5mm^2 active area.
+The active area of the photodiode determines the capacitance but also the current sensitivity. The capacitance directly influences possible bandwidth. Ideally, we want a small photodiode area and we find this in the VEMD2704 with $\SI{1.5}{\milli\meter\squared}$.
 
-We choose a 3x3 grid of photodiodes. We validate this choice by recording a video of the speckle pattern using a Raspberry Pi HQ camera. In the video, the speckle pattern translates back and forth. The sensor area of the RPI Cam is large enough to accomodate 9 VEMD2704 photodiodes as in \ref{emulated1}. Using this emulation we can process the 9 area's average pixel intensity and create a 1d signal (coarsensess) \ref{emulated2}.
+We choose a 3x3 grid of photodiodes. We validate this choice by recording a video of the speckle pattern using a Raspberry Pi HQ camera. In the video, the speckle pattern translates back and forth. The sensor area of the RPI Cam is large enough to accomodate 9 VEMD2704 photodiodes as in \ref{fig:emulated1}. Using this emulation we can process the 9 area's average pixel intensity and create a 1d signal (coarsensess) 
+\ref{fig:emulated2}.
 
 \begin{figure}[t]
   \centering
@@ -36,12 +37,6 @@ We choose a 3x3 grid of photodiodes. We validate this choice by recording a vide
   \label{fig:emulated1}
 \end{figure}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\widthnarrow]{figures/impl/emulated2.png}
-  \caption{Emulation captures translations of the speckle}
-  \label{fig:emulated2}
-\end{figure}
 
 %- how many photodiodes can we use? how small can we get them to be? area of photodiodes ==> how much photocurrent. therefore, setup an experiment with a RPI HQ camera sensor and see view the resulting speckle pattern. 
 %translate the house and watch the speckle pattern translate too. use red laser as the wavelength doesnt for easy experimentation.
@@ -68,7 +63,7 @@ The essential requirements for the op-amps include:
   \item Capability to operate on a single power supply.
 \end{itemize}
 
-The OPA2380 fulfilled these requirements and a PCB was designed and built according to the datasheet recommendations. Particular attention to leakage currents was taken, like the implementation of a guard ring. The guard ring is a low impedance path for any stray AC that might want to make its way into the feedback path of the amp. The PCB is shown in \ref{fig:pcb} and contains a modular photodiode array with bandpass filter.
+The OPA2380 fulfilled these requirements and a PCB was designed and built according to the datasheet recommendations. Particular attention to leakage currents was taken, like the implementation of a guard ring. The guard ring is a low impedance path for any stray AC that might want to make its way into the feedback path of the amp. The PCB is shown in \ref{fig:pcb_setup} and contains a modular photodiode array with bandpass filter.
 
 The bandpass filter is chosen to be at 850nm as that is where silicon photodiodes are most efficient. Lasers are 850nm are common and we are able to filter out a lot of environmental light.
 
@@ -81,15 +76,28 @@ The first ADC was unable to sample at high enough frequencies. Although it utili
 
 A second ADC was then tested, featuring a higher sample rate and advertised synchronous sample readout capability. This ADC is designed as a Raspberry Pi HAT and uses the Pi's 5V supply as its analog reference. However, this reference is very noisy, with peak-to-peak noise in the millivolt range. To mitigate this issue, a bench power supply was used to power the ADC externally.
 
-Raw data from the ADC was recorded and observed in real-time or processed post-capture. Real-time observations were conducted while simultaneously monitoring the speckle camera and the infrared (IR) camera.
+To convert the 9-channel photodiode array readings into a single vibrometry signal, we compute the inter-channel variance. 
+First, we remove common-mode fluctuations by subtracting the instantaneous mean across all channels:
 
+\begin{equation}
+s_i(t) = r_i(t) - \frac{1}{n}\sum_{k=1}^{n} r_k(t)
+\end{equation}
 
+where $r_i(t)$ is the raw intensity reading from channel $i$ and $n=9$ is the number of channels. We then compute the inter-channel variance:
 
-%wide figs
+\begin{equation}
+V(t) = \frac{2}{n(n-1)} \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} |s_i(t) - s_j(t)|
+\end{equation}
+
+This metric quantifies the average magnitude of pairwise intensity differences between spatial channels in the instantaneous speckle pattern. 
+Changes in $V(t)$ over time indicate surface motion and vibration while being robust to common-mode noise.
+
+Raw data from the ADC was recorded and observed in real-time or processed post-capture. 
+Real-time observations were conducted while simultaneously monitoring the speckle camera and the infrared (IR) camera.
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=\textwidth]{figures/impl/pcb_design.pdf}
-  \caption{maxwidth cap}
-  \label{fig:pcb}
+  \includegraphics[width=\textwidth]{figures/impl/emulated2.png}
+  \caption{Emulation captures translations of the speckle. Peaks show motion.}
+  \label{fig:emulated2}
 \end{figure*}

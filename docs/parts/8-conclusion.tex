@@ -1,16 +1,11 @@
-\section{Conclusion}
-
-research question answer: it is possible to detect a speckle pattern in motion using a discrete photodiode array 
-
-
-limitations: 
-- in sunlight, the opamp saturates and the signal is unrecoverable
-- Bandwidth should be increased for
-
-% --------------------------------------
-\subsection{Future work}
+\subsection{Future Work}
 \label{sub:future_work}
 
-- use an opamp with higher GBW for higher Bandwidth
-- use a current to digital amplifier chip like the DDC118 for higher integration
-- subtrace the vibrations of the sensor itself using an accelerometer
+To address the identified limitations and improve the system, several avenues for future work are proposed:
+
+\begin{itemize}
+    \item \textbf{Higher Bandwidth}: Replace the current opamp with one that has a higher gain-bandwidth product (GBW) to increase the system bandwidth and enable detection of faster speckle movements.
+    \item \textbf{Current to Digital Amp}: Integrate a current-to-digital amplifier chip, such as the DDC118, to enhance system integration and make the PCB smaller.
+    \item \textbf{Sensor Vibration Compensation}: Mitigate the influence of vibrations from the sensor itself by incorporating an accelerometer to subtract self-induced motion artifacts from the measurements.
+    \item \textbf{Synchrous Detection}: Modulate the laser light with a known reference signal to perform synchronous detection (aka lock-in amplifier) for more robustness against daylight.
+\end{itemize}
