@@ -1,0 +1,13 @@
+
+rpicam-vid --timeout 0 --camera 1 --autofocus-mode manual  --awb custom --awbgains 20,2 --shutter 500 --denoise off --framerate 60 --codec yuv420 -o Videos/off_on_69Hz_IRbandpass850_realsense_60fps.raw
+
+for videos:
+off_on_69Hz_IRbandpass850_realsense_60fps.raw
+off_on_15Hz_IRbandpass850_realsense_60fps.raw
+
+
+rpicam-vid --timeout 30000 --camera 1 --autofocus-mode manual  --awb custom --awbgains 20,2 --shutter 500 --denoise off --framerate 30 --codec yuv420 -o Videos/10Hz_IRbandpass850_laser1point_30fps_1.raw
+for videos:
+10Hz_IRbandpass850_laser1point_30fps_1.raw -- laser pointer on house
+10Hz_IRbandpass850_laser1point_30fps_2ondisc.raw -- laser pointer on disc (vibrating at 6v amplitude, square wave 10Hz)
+10Hz_IRbandpass850_laser1point_30fps_3ondisc.raw -- laser pointer on disc, vibrating at 6v amplitude, square wave 10Hz, 60 sec

@@ -4,7 +4,8 @@
 To address the identified limitations and improve the system, several avenues for future work are proposed:
 
 \begin{itemize}
-    \item \textbf{Higher Bandwidth}: Replace the current opamp with one that has a higher gain-bandwidth product (GBW) to increase the system bandwidth and enable detection of faster speckle movements.
+    \item \textbf{Higher Bandwidth}: Replace the current ADC with one that has a higher sampling rate to increase the system bandwidth and enable detection of faster speckle movements.
+    \item \textbf{Single Op-amp + MUX}: Just use a single opamp with a mux, synchronous with sampling, to reduce system cost.
     \item \textbf{Current to Digital Amp}: Integrate a current-to-digital amplifier chip, such as the DDC118, to enhance system integration and make the PCB smaller.
     \item \textbf{Sensor Vibration Compensation}: Mitigate the influence of vibrations from the sensor itself by incorporating an accelerometer to subtract self-induced motion artifacts from the measurements.
     \item \textbf{Synchrous Detection}: Modulate the laser light with a known reference signal to perform synchronous detection (aka lock-in amplifier) for more robustness against daylight.

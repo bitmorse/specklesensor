@@ -10,9 +10,7 @@ However, this brings the burden of cable management onto the user. Wireless sens
 These limitations motivate the need for a vibration sensor that is easier to install and maintain and capable of monitoring many instances of equipment at once.
 
 Some monitoring approaches use microphones installed centrally in the room, using sound as a proxy for vibration. 
-Many microphones are required to distinguish sounds coming from different sources.
-
-Remote video cameras can be used to record vibrations \cite{camvibration} when aimed at a fiducial marking. 
+Many microphones are required to distinguish sounds coming from different sources. Remote video cameras can be used to record vibrations \cite{camvibration} when aimed at a fiducial marking. 
 Many objects can fit in the field of view of a camera and can thus be monitored. 
 
 While cameras offer a non-contact and simple method for vibration sensing, they're limited to detecting macroscopic (resolution limited) and low-frequency (frame-rate limited) vibrations.
@@ -24,12 +22,12 @@ This pattern, known as a speckle pattern, results from the superposition of cohe
 The resulting speckle pattern can be observed on any imaging plane at a distance from the surface. To capture this pattern one can expose the bare image sensor (without lens) 
 of any camera to the reflected and scattered light.
 
-When the surface is mechanically deformed, the imperfections are altered, causing the pattern to change as well. If the surface is translated under the laser light, the pattern appears to shift.
+When the surface is mechanically deformed, the imperfections are altered, causing the pattern to change as well. 
+If the surface is translated under the laser light, the pattern appears to shift.
 
 In this work, we exploit this phenomenon for high speed remote vibration sensing. Our approach exceeds the bandwidth limitations of camera-based vibration sensing by capturing 
-speckle patterns with an array of discrete high-speed photo-detectors arranged in a 3x3 grid - essentially a discrete image sensor.
-
-The novel discrete image sensor combines the advantages of remote, non-contact sensing with the ability to capture vibrations at a higher sampling rate than conventional cameras.
+speckle patterns with an array of discrete high-speed photo-detectors arranged in a 3x3 grid - essentially a discrete image sensor. The novel discrete image sensor combines the advantages of remote, 
+non-contact sensing with the ability to capture vibrations at a higher sampling rate than conventional cameras.
 
 To implement this concept, we designed and built the analog photo-detectors on a custom printed circuit board (PCB).
 
@@ -48,6 +46,8 @@ Our discrete sensor has a bandwidth of 1 \si{\kilo\hertz} exceeding the maximum 
 The work in this semester project makes the following contributions.
 
 \begin{itemize}
-    \item High-bandwidth discrete sensor. Developed 1 kHz single-supply bandwidth sensor, surpassing conventional cameras by order of magnitude.
-    \item Sensitivity optimization. Achieved comparable sensitivity to reference sensor while maintaining high bandwidth.
+    \item High-bandwidth discrete sensor. Developed 1.5 kHz single-supply bandwidth sensor, surpassing conventional cameras by order of magnitude.
+    \item Sensitivity optimization. Achieved comparable sensitivity to a reference camera sensor while maintaining high bandwidth.
+    \item Laser setups. Produced a variety of low cost laser projector and discrete laser module setups.
+    \item SNR improvement. If the sensors sensitivity is high enough for sensing one lasers backscattered light, then increasing the laser beam count improves SNR.
 \end{itemize}

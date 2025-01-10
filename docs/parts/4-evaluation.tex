@@ -17,17 +17,34 @@ Data processing was performed in real time during qualitative experiments or rec
 
 \subsection{Procedure}
 
-The initial steps of the evaluation involved SPICE simulations to analyze the Bode plot and transient response of the amplifier, as illustrated in Figures~\ref{fig:bodeplot} and \ref{fig:transient}. 
-These simulations provided the SNR to be 81.6~dB for an output value of approximately 80~mV (corresponding to a 1~nA photocurrent at 1000~kHz). 
+The initial steps of the evaluation involved SPICE simulations to analyze the Bode plot and transient response of the amplifier, as illustrated in Figure \ref{fig:bodeplot}.
+
+Noise simulations (TI TINA SPICE with models from Texas Instruments \ref{fig:spice}) predicted the SNR to be 81.6~dB for an output value of approximately 80~mV (corresponding to a 1~nA photocurrent at 1000~kHz). 
+The transient response showed quick settling and no ringing.
 This demonstrates that the amplifier displayed stable behavior with high gain and SNR. Based on these results, the PCB was layouted, ordered and assembled.
 
 Following the PCB assembly, it was cleaned using isopropyl alcohol (IPA) and compressed air, particularly under the pads of the amplifier section. 
-Removing all flux residue from the PCB was deemed critical to ensure stable operation. All measurements were conducted in a light-controlled environment to minimize interference from external light sources.
+Removing all flux residue from the PCB was deemed critical to ensure stable operation. 
+All measurements were conducted in a light-controlled environment to minimize interference from external light sources.
 
-To assess the influence of multiple laser sources, a controlled surface vibration of a piezo disc (at 133~Hz) was measured,
+To assess the performance of the amplifier qualitatively, a single IR laser was used first. 
+It was aimed at a painted wooden surface while tapping the surface, jumping on the floor or banging the room door shut. 
+
+Next, a single laser was aimed at a vibrating piezo disc and the FFT of the 1d signal calculated.
+
+To assess the influence of multiple laser sources, the piezo disc (at 133~Hz) was measured,
 while lasers in the square array were activated incrementally (Figure~\ref{fig:lasers}). 
 
-For each configuration, the power spectral density of the inter-channel variance signal was calculated, and the SNR was analyzed. The spectral analysis, shown in Figure~\ref{fig:laser_snr}, 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/results/multilaser_spectrogram}
+    \caption{Spectral analysis of a 133~Hz surface vibration under different laser configurations. 
+    Top: Power spectral density showing the target frequency component. Bottom: SNR improvement with increasing number of active lasers.}
+    \label{fig:laser_snr}
+\end{figure*}
+
+For each configuration, the power spectral density of the inter-channel variance signal was calculated, and the SNR was analyzed. 
+The spectral analysis, shown in Figure~\ref{fig:laser_snr}, 
 established a positive correlation ($R^2 = 0.60$) between the number of active lasers and the detection SNR. 
 A control measurement with all lasers switched off confirmed that the recorded signals originated from laser speckle patterns.
 
@@ -36,17 +53,17 @@ An infrared (IR) LED was integrated into the setup to validate that the observed
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\widthnarrow]{figures/eval/transient}
-\caption{Transient response captured during SPICE simulation, highlighting amplifier dynamics and stability.}
-\label{fig:transient}
-\end{figure}
-
-\begin{figure}[t]
-\centering
 \includegraphics[width=\widthnarrow]{figures/eval/bode.png}
 \caption{Amplifier frequency and phase response.}
 \label{fig:bodeplot}
 \end{figure}
+
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=\widthnarrow]{figures/eval/transient}
+% \caption{Transient response captured during SPICE simulation, highlighting amplifier dynamics and stability.}
+% \label{fig:transient}
+% \end{figure}
 
 % \begin{figure}[t]
 % \centering
@@ -61,26 +78,3 @@ An infrared (IR) LED was integrated into the setup to validate that the observed
 % \caption{SNR for an output value of approximately 80~mV (corresponding to a 1~nA photocurrent at 1000~kHz).}
 % \label{fig:snr}
 % \end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\widthnarrow]{figures/eval/detectors.png}
-\caption{The Raspberry Pi No-IR (top left) was used to align invisible IR lasers, the Raspberry Pi HQ camera for showing speckle patterns and the (masked) Thorlabs 
-detector for establishing a photocurrent baseline for our amplifier.}
-\label{fig:detectors}
-\end{figure}
-
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\textwidth]{figures/results/multilaser_spectrogram}
-    \caption{Spectral analysis of a 133~Hz surface vibration under different laser configurations. 
-    Top: Power spectral density showing the target frequency component. Bottom: SNR improvement with increasing number of active lasers.}
-    \label{fig:laser_snr}
-\end{figure*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/eval/speckles}
-\caption{Visualization of speckle patterns under different 1~mW IR laser configurations using the square laser array from Figure~\ref{fig:lasers}. Top left: 1 laser. Bottom right: 10 lasers.}
-\label{fig:speckles}
-\end{figure*}
