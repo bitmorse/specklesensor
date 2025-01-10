@@ -1,6 +1,8 @@
 # specklesensor
 A photodiode array for laser speckle sensing and vibrometry.
 
+Read the full paper [here](docs/thesis.pdf).
+
 ![PCB Design](docs/figures/impl/pcb_design.png)
 
 Spectral analysis of a 133 Hz surface vibration under different laser configurations. Top: Power spectral density showing the target frequency
